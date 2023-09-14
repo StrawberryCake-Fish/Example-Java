@@ -6,7 +6,7 @@ public class Single {
 
     private static volatile Single single;
 
-    public static Single getSingle() {
+    public static Single createSingle() {
         if (single == null) {
             synchronized (Single.class) {
                 if (single == null) {

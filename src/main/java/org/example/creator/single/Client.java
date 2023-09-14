@@ -11,7 +11,7 @@ public class Client {
         for (int i = 1; i <= 5; i++) {
             int finalI = i;
             new Thread(() -> {
-                Single single = Single.getSingle();
+                Single single = Single.createSingle();
                 logger.info("{} ===> {}", single.getClass().getName() + "@" + Integer.toHexString(single.hashCode()), single.echo(String.valueOf(finalI)));
             }).start();
         }
