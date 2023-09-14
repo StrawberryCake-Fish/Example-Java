@@ -6,11 +6,15 @@ import java.io.Serializable;
 public class Single implements Serializable {
     @Serial
     private static final long serialVersionUID = -6968534045431104534L;
+    private static boolean flag = false;
 
     private Single() {
         // 避免被反射破坏
-        if (single != null) {
-            throw new RuntimeException("Single instance is not null!");
+        synchronized (Single.class) {
+            if (flag) {
+                throw new RuntimeException("Single instance is not null!");
+            }
+            flag = true;
         }
     }
 
