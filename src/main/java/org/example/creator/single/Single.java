@@ -1,7 +1,17 @@
 package org.example.creator.single;
 
-public class Single {
+import java.io.Serial;
+import java.io.Serializable;
+
+public class Single implements Serializable {
+    @Serial
+    private static final long serialVersionUID = -6968534045431104534L;
+
     private Single() {
+        // 避免被反射破坏
+        if (single != null) {
+            throw new RuntimeException("Single instance is not null!");
+        }
     }
 
     private static volatile Single single;
@@ -19,5 +29,11 @@ public class Single {
 
     public String echo(String s) {
         return s;
+    }
+
+    @Serial
+    public Object readResolve() {
+        // 避免被序列化破坏
+        return Single.createSingle();
     }
 }
