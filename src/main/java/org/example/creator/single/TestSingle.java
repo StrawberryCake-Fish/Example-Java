@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 import java.lang.reflect.Constructor;
 
-public class SingleTest {
+public class TestSingle {
     private final static Logger logger = LoggerFactory.getLogger(Main.class);
 
     @Test
